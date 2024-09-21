@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación Metacritic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .album-review {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 600px;
+            height: 450px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .album-review img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .titulo_album {
+            font-family: 'Arial', sans-serif;
+            /* Fuente Arial */
+            font-size: 40px;
+            /* Tamaño de la fuente */
+            font-weight: bold;
+            /* Aplica el estilo en negrita */
+            margin: 0px 0;
+            /* Márgenes superior e inferior */
+        }
+
+        .info-wrapper {
+            display: flex;
+            align-items: center;
+            /* Alinea verticalmente los elementos */
+            justify-content: center;
+            /* Alinea horizontalmente al centro */
+            gap: 5px;
+            /* Espaciado entre los elementos */
+            color: #888;
+            font-size: 14px;
+        }
+
+        .artista_album {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .fecha_lanzamiento {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .meta-score {
+            display: flex;
+            justify-content: center;
+            /* Alinea los elementos al centro */
+            align-items: center;
+            /* Alinea verticalmente al centro */
+            margin-top: 15px;
+            width: 100%;
+            gap: 20px;
+            /* Espaciado entre los elementos */
+        }
+
+        .caja_calificacion {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .meta-reviews {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .meta-reviews span {
+            font-weight: bold;
+            /* Estilo para "Metascore" */
+            color: #000;
+        }
+
+        .meta-reviews a {
+            color: #007bff;
+            /* Color del link */
+            text-decoration: none;
+        }
+
+        .divider {
+            border-left: 1px solid #888;
+            /* Barra vertical con grosor de 1px */
+            height: 60px;
+            /* Altura de la barra */
+            margin: 0 20px;
+        }
+
+        .tbd-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Espaciado entre el círculo y el texto */
+        }
+
+        .tbd-circle {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #ddd;
+            font-family: 'Arial', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0px 0;
+            color: #ffffff;
+        }
+
+        .stream-button {
+            width: 80%;
+            height: auto;
+            padding: 10px 20px;
+            background-color: #d8d8d8;
+            border: none;
+            color: #000000;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: not-allowed;
+        }
+
+        .green {
+            background-color: #66cc33;
+        }
+
+        .yellow {
+            background-color: #ffcc33;
+        }
+
+        .red {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="album-review">
+        <img src="imagen/XIV.jpg" alt="Portada del álbum">
+        <div class="titulo_album">XIV</div>
+        <div class="info-wrapper">
+            <div class="artista_album">Adrián Bernardino</div>
+            <div>|</div>
+            <div class="fecha_lanzamiento">Release Date: August 18, 2014</div>
+        </div>
+
+        <div class="meta-score">
+            <div class="caja_calificacion green">90</div>
+
+            <!-- MetaScore y Reviews -->
+            <div class="meta-reviews">
+                <span>Metascore</span>
+                <a href="#">11 reviews</a>
+            </div>
+
+            <!-- Línea divisora -->
+            <div class="divider"></div>
+
+            <!-- Sección tbd -->
+            <div class="tbd-box">
+                <div class="tbd-circle">tbd</div>
+                <div class="meta-reviews">
+                    <span>No Score</span>
+                    <span>Available</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="stream-button">Stream Now</button>
+    </div>
+
+    <script>
+        function setScoreColor(score) {
+            const scoreBox = document.getElementById('score');
+            scoreBox.textContent = score;
+
+            if (score >= 75) {
+                scoreBox.classList.add('green');
+                scoreBox.classList.remove('yellow', 'red');
+            } else if (score >= 50) {
+                scoreBox.classList.add('yellow');
+                scoreBox.classList.remove('green', 'red');
+            } else {
+                scoreBox.classList.add('red');
+                scoreBox.classList.remove('green', 'yellow');
+            }
+        }
+
+        setScoreColor(90);
+    </script>
+
+</body>
+
+</html>
